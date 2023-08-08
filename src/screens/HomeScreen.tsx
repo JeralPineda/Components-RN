@@ -31,6 +31,7 @@ export const HomeScreen = () => {
       <FlatList
         data={menuItems}
         renderItem={({item}) => renderMenuItem(item)}
+        keyExtractor={item => item.name}
       />
     </View>
   );
