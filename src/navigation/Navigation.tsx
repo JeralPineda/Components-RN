@@ -6,7 +6,17 @@ const Stack = createStackNavigator();
 
 export const Navigation = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+        headerStyle: {
+          elevation: 0,
+          shadowColor: "transparent", //IOS
+        },
+        cardStyle: {
+          backgroundColor: "white",
+        },
+      }}>
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
     </Stack.Navigator>
   );
