@@ -1,38 +1,13 @@
 import React from "react";
-import {FlatList, StyleSheet, Text, View} from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
+import {StyleSheet, View} from "react-native";
+import {globalStyles} from "../theme/";
 
-interface MenuItem {
-  name: string;
-  icon: string;
-  components: string;
-}
-
-const menuItems = [
-  {
-    name: "Animation 101",
-    icon: "cube-outline",
-    components: "Animation101Screen",
-  },
-];
+import {FlatListMenu} from "../components/flatlist";
 
 export const HomeScreen = () => {
-  const renderMenuItem = (menuItem: MenuItem) => {
-    return (
-      <View>
-        <Text>{menuItem.name}</Text>
-        <Icon name={menuItem.icon} size={24} />
-      </View>
-    );
-  };
-
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={menuItems}
-        renderItem={({item}) => renderMenuItem(item)}
-        keyExtractor={item => item.name}
-      />
+    <View style={{...styles.container, ...globalStyles.margin}}>
+      <FlatListMenu />
     </View>
   );
 };
