@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {StyleSheet, View, Switch, Platform} from "react-native";
+import {FlatListMenuHeader} from "../components/flatlist";
 
 export const SwitchScreen = () => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -7,6 +8,8 @@ export const SwitchScreen = () => {
 
   return (
     <View style={styles.container}>
+      <FlatListMenuHeader title="Sweetches" />
+
       <Switch
         trackColor={{false: "#d9d9db", true: "#5856d6"}}
         thumbColor={Platform.OS === "android" ? "#5856d6" : ""}
@@ -20,9 +23,6 @@ export const SwitchScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    marginTop: 20,
-    justifyContent: "center",
-    alignItems: "center",
+    marginHorizontal: 20,
   },
 });
