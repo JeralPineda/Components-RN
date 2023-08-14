@@ -25,6 +25,7 @@ export const AlertScreen = () => {
   };
 
   const showPrompt = () => {
+    //* Nativo solo para IOS, esta implementación se puede solucionar con la creación de un modal o un paquete de terceros(esta es la ultima opción)
     Alert.prompt(
       "¿Estas seguro?",
       "Esta acción no se puede revertir",
@@ -41,14 +42,16 @@ export const AlertScreen = () => {
 
       <Button title="Mostrar Alerta" onPress={showAlert} />
 
-      {/* //* Nativo solo para IOS */}
+      <View style={styles.margin} />
+
+      {/* //* Nativo solo para IOS, esta implementación se puede solucionar con la creación de un modal o un paquete de terceros */}
       <Button title="Mostrar Prompt" onPress={showPrompt} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  button: {
-    marginHorizontal: 10,
+  margin: {
+    marginBottom: 10,
   },
 });
