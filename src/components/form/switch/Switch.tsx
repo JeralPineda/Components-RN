@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {StyleSheet, Switch, Platform} from "react-native";
+import {Switch, Platform} from "react-native";
 
 interface CustomSwitchProps {
   isOn: boolean;
@@ -24,5 +24,3 @@ export const CustomSwitch = ({isOn, onChange}: CustomSwitchProps) => {
     />
   );
 };
-
-const styles = StyleSheet.create({});
