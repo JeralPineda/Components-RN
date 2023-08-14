@@ -2,13 +2,17 @@ import React, {useState} from "react";
 import {StyleSheet, Switch, Platform} from "react-native";
 
 interface CustomSwitchProps {
-  isOn: boolean;                  
+  isOn: boolean;
+  onChange: (value: boolean) => void;
 }
 
-export const CustomSwitch = ({isOn}: CustomSwitchProps) => {
+export const CustomSwitch = ({isOn, onChange}: CustomSwitchProps) => {
   const [isEnabled, setIsEnabled] = useState(isOn);
 
-  const toggleSwitch = () => setIsEnabled(!isEnabled);
+  const toggleSwitch = () => {
+    setIsEnabled(!isEnabled);
+    onChange(!isEnabled);
+  };
 
   return (
     <Switch
