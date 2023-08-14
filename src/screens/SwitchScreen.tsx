@@ -10,6 +10,8 @@ export const SwitchScreen = () => {
     inHappy: true,
   });
 
+  const {isActivity} = state;
+
   const onChange = (value: boolean, field: keyof typeof state) => {
     setState({
       ...state,
@@ -22,7 +24,10 @@ export const SwitchScreen = () => {
       <FlatListMenuHeader title="Sweetches" />
       <View style={styles.switchRow}>
         <Text style={styles.switchText}>isActive</Text>
-        <Switch isOn={true} onChange={value => onChange(value, "isActivity")} />
+        <Switch
+          isOn={isActivity}
+          onChange={value => onChange(value, "isActivity")}
+        />
       </View>
 
       <Text style={styles.switchText}>{JSON.stringify(state, null, 3)}</Text>
