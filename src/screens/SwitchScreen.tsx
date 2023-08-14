@@ -7,10 +7,10 @@ export const SwitchScreen = () => {
   const [state, setState] = useState({
     isActivity: false,
     isHungry: false,
-    inHappy: true,
+    isHappy: true,
   });
 
-  const {isActivity} = state;
+  const {isActivity, isHungry, isHappy} = state;
 
   const onChange = (value: boolean, field: keyof typeof state) => {
     setState({
@@ -22,12 +22,26 @@ export const SwitchScreen = () => {
   return (
     <View style={styles.container}>
       <FlatListMenuHeader title="Sweetches" />
+
       <View style={styles.switchRow}>
         <Text style={styles.switchText}>isActive</Text>
         <Switch
           isOn={isActivity}
           onChange={value => onChange(value, "isActivity")}
         />
+      </View>
+
+      <View style={styles.switchRow}>
+        <Text style={styles.switchText}>isHungry</Text>
+        <Switch
+          isOn={isHungry}
+          onChange={value => onChange(value, "isHungry")}
+        />
+      </View>
+
+      <View style={styles.switchRow}>
+        <Text style={styles.switchText}>isHappy</Text>
+        <Switch isOn={isHappy} onChange={value => onChange(value, "isHappy")} />
       </View>
 
       <Text style={styles.switchText}>{JSON.stringify(state, null, 3)}</Text>
