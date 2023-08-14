@@ -9,4 +9,7 @@ export const globalStyles = StyleSheet.create({
   margin: {
     marginHorizontal: 20,
   },
+  primaryColor: {
+    color: "#5856d6",
+  },
 });
