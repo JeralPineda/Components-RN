@@ -1,5 +1,11 @@
 import {StyleSheet} from "react-native";
 
+export const colors = {
+  primary: "#5856d6",
+  secondary: "#dbdbdb",
+  text: "#333333",
+};
+
 export const globalStyles = StyleSheet.create({
   title: {
     fontSize: 25,
