@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {
   StyleSheet,
   View,
@@ -8,23 +8,27 @@ import {
   ScrollView,
   TouchableWithoutFeedback,
   Keyboard,
+  Text,
 } from "react-native";
 import {FlatListMenuHeader} from "../components/flatlist";
 import {globalStyles} from "../theme";
+import {useForm} from "../hooks/useForm";
+import {Switch} from "../components/form";
 
 export const TextInputScreen = () => {
-  const [form, setForm] = useState({
+  const {form, onChange, isSuscribed} = useForm({
     name: "",
     email: "",
     phone: "",
+    isSuscribed: false,
   });
 
-  const onChange = (value: string, field: string) => {
-    setForm({
-      ...form,
-      [field]: value,
-    });
-  };
+  // const onChange = (value: string, field: string) => {
+  //   setForm({
+  //     ...form,
+  //     [field]: value,
+  //   });
+  // };
 
   return (
     <KeyboardAvoidingView
@@ -52,6 +56,14 @@ export const TextInputScreen = () => {
               keyboardType="email-address"
             />
 
+            <View style={styles.switchRow}>
+              <Text style={styles.switchText}>Suscribirse</Text>
+              <Switch
+                isOn={isSuscribed}
+                onChange={value => onChange(value, "isSuscribed")}
+              />
+            </View>
+
             <FlatListMenuHeader title={JSON.stringify(form, null, 3)} />
             <FlatListMenuHeader title={JSON.stringify(form, null, 3)} />
             <TextInput
@@ -63,7 +75,7 @@ export const TextInputScreen = () => {
             />
           </View>
 
-          <View style={{height: 100}} />
+          <View style={styles.separator} />
         </ScrollView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
@@ -81,5 +93,18 @@ const styles = StyleSheet.create({
     height: 50,
     paddingHorizontal: 10,
     marginBottom: 10,
+  },
+  switchRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 10,
+  },
+  switchText: {
+    fontSize: 20,
+    color: "#646363",
+  },
+  separator: {
+    height: 100,
   },
 });
