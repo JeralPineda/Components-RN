@@ -13,6 +13,7 @@ export const SectionListScreen = () => {
         sections={casas}
         renderItem={({item}) => <Text>{item}</Text>}
         keyExtractor={(item, index) => item + index}
+        stickySectionHeadersEnabled
         renderSectionHeader={({section}) => (
           <View style={styles.sectionHeader}>
             <FlatListMenuHeader title={section.casa} />
