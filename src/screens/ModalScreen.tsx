@@ -16,8 +16,8 @@ export const ModalScreen = () => {
       <Modal
         //
 
-        animationType="slide"
-        // transparent={true}
+        animationType="fade"
+        transparent={true}
         visible={isOpenModal}>
         <View style={styles.modalContainer}>
           {/* Content */}
@@ -39,10 +39,22 @@ const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
     backgroundColor: "rgba(0,0,0,0.5)",
+    justifyContent: "center",
+    alignItems: "center",
   },
   contentModal: {
     backgroundColor: "white",
     padding: 20,
-    // height: "50%",
+    width: 200,
+    height: 200,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 6,
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+    shadowOpacity: 0.25, //! Sombra IOS
+    elevation: 10, //! Sombra Android
   },
 });
