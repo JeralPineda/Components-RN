@@ -3,5 +3,6 @@ export {Animation101Screen} from "./Animation101Screen";
 export {Animation102Screen} from "./Animation102Screen";
 export {HomeScreen} from "./HomeScreen";
 export {PullToRefreshScreen} from "./PullToRefreshScreen";
+export {SectionListScreen} from "./SectionListScreen";
 export {SwitchScreen} from "./SwitchScreen";
 export {TextInputScreen} from "./TextInputScreen";
