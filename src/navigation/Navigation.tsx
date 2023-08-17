@@ -5,6 +5,7 @@ import {
   Animation101Screen,
   Animation102Screen,
   HomeScreen,
+  PullToRefreshScreen,
   SwitchScreen,
   TextInputScreen,
 } from "../screens";
@@ -30,6 +31,10 @@ export const Navigation = () => {
       <Stack.Screen name="SwitchScreen" component={SwitchScreen} />
       <Stack.Screen name="AlertScreen" component={AlertScreen} />
       <Stack.Screen name="TextInputScreen" component={TextInputScreen} />
+      <Stack.Screen
+        name="PullToRefreshScreen"
+        component={PullToRefreshScreen}
+      />
     </Stack.Navigator>
   );
 };
