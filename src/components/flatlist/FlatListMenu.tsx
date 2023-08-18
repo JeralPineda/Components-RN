@@ -12,9 +12,7 @@ export const FlatListMenu = () => {
       data={menuItems}
       renderItem={({item}) => <FlatListMenuItem menuItem={item} />}
       keyExtractor={item => item.name}
-      ListHeaderComponent={() => (
-        <FlatListMenuHeader title="Opciones de menu" />
-      )}
+      ListHeaderComponent={<FlatListMenuHeader title="Opciones de menu" />}
       ItemSeparatorComponent={() => <FlatListMenuSeparator />}
     />
   );
