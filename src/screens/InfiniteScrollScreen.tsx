@@ -1,13 +1,8 @@
 import React, {useState} from "react";
-import {
-  ActivityIndicator,
-  FlatList,
-  Image,
-  StyleSheet,
-  View,
-} from "react-native";
+import {ActivityIndicator, FlatList, StyleSheet, View} from "react-native";
 import {FlatListMenuHeader} from "../components/flatlist";
 import {colors} from "../theme";
+import {FadeInImage} from "../components";
 
 export const InfiniteScrollScreen = () => {
   const [numbers, setNumbers] = useState([0, 1, 2, 3, 4, 5]);
@@ -25,12 +20,11 @@ export const InfiniteScrollScreen = () => {
   };
 
   const renderItem = (item: number) => {
-    return (
-      <Image
-        style={styles.image}
-        source={{uri: `https://picsum.photos/id/${item}/500/400`}}
-      />
-    );
+    return <FadeInImage uri={`https://picsum.photos/id/${item}/500/400`} />;
+    // <Image
+    //   style={styles.image}
+    //   source={{uri: `https://picsum.photos/id/${item}/500/400`}}
+    // />
   };
 
   return (
