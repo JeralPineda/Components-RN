@@ -20,7 +20,12 @@ export const InfiniteScrollScreen = () => {
   };
 
   const renderItem = (item: number) => {
-    return <FadeInImage uri={`https://picsum.photos/id/${item}/500/400`} />;
+    return (
+      <FadeInImage
+        uri={`https://picsum.photos/id/${item}/500/400`}
+        style={{width: "100%", height: 400}}
+      />
+    );
     // <Image
     //   style={styles.image}
     //   source={{uri: `https://picsum.photos/id/${item}/500/400`}}
@@ -33,7 +38,11 @@ export const InfiniteScrollScreen = () => {
         data={numbers}
         keyExtractor={item => item.toString()}
         renderItem={({item}) => renderItem(item)}
-        ListHeaderComponent={<FlatListMenuHeader title="InfiniteScroll" />}
+        ListHeaderComponent={
+          <View style={styles.header}>
+            <FlatListMenuHeader title="InfiniteScroll" />
+          </View>
+        }
         onEndReached={loadMore} //! dispara al llegar al final
         onEndReachedThreshold={0.5} //! indica que tan cerca tiene que estar del fondo para disparar acción o cargar de los demás elementos
         ListFooterComponent={
@@ -57,6 +66,9 @@ const styles = StyleSheet.create({
   image: {
     height: 400,
     width: "100%",
+  },
+  header: {
+    marginHorizontal: 20,
   },
   footer: {
     height: 150,
