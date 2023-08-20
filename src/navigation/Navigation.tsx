@@ -9,6 +9,7 @@ import {
   ModalScreen,
   PullToRefreshScreen,
   SectionListScreen,
+  SlideScreen,
   SwitchScreen,
   TextInputScreen,
 } from "../screens";
@@ -44,6 +45,7 @@ export const Navigation = () => {
         name="InfiniteScrollScreen"
         component={InfiniteScrollScreen}
       />
+      <Stack.Screen name="SlideScreen" component={SlideScreen} />
     </Stack.Navigator>
   );
 };
