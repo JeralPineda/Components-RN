@@ -23,10 +23,10 @@ export const Navigation = () => {
         headerShown: false,
         headerStyle: {
           elevation: 0,
-          shadowColor: "transparent", //IOS
+          // shadowColor: "transparent", //IOS
         },
         cardStyle: {
-          backgroundColor: "white",
+          // backgroundColor: "white",
         },
       }}>
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
