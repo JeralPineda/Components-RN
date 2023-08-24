@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Image} from "react-native";
+import {Image, TouchableOpacity} from "react-native";
 import {
   ImageSourcePropType,
   SafeAreaView,
@@ -11,6 +11,7 @@ import {
 import Carousel, {Pagination} from "react-native-snap-carousel";
 
 import {colors} from "../theme";
+import Icon from "react-native-vector-icons/Ionicons";
 
 const {width: screenWidth} = Dimensions.get("window");
 
@@ -68,16 +69,23 @@ export const SlideScreen = () => {
         defaultIndex={activeIndex}
       />
 
-      <Pagination
-        dotsLength={items.length}
-        activeDotIndex={activeIndex}
-        dotStyle={{
-          width: 10,
-          height: 10,
-          borderRadius: 5,
-          backgroundColor: colors.primary,
-        }}
-      />
+      <View style={styles.paginationContainer}>
+        <Pagination
+          dotsLength={items.length}
+          activeDotIndex={activeIndex}
+          dotStyle={{
+            width: 10,
+            height: 10,
+            borderRadius: 5,
+            backgroundColor: colors.primary,
+          }}
+        />
+
+        <TouchableOpacity style={styles.pagination}>
+          <Text style={styles.icon}>Entrar</Text>
+          <Icon name="chevron-forward-outline" color="white" size={20} />
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };
@@ -108,5 +116,25 @@ const styles = StyleSheet.create({
   description: {
     color: colors.text,
     fontSize: 16,
+  },
+
+  paginationContainer: {
+    justifyContent: "space-between",
+    marginHorizontal: 20,
+    alignItems: "center",
+    flexDirection: "row",
+  },
+  pagination: {
+    flexDirection: "row",
+    backgroundColor: colors.primary,
+    width: 120,
+    height: 50,
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  icon: {
+    fontSize: 20,
+    color: "white",
   },
 });
