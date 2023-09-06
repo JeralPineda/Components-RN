@@ -1,5 +1,9 @@
-import React from "react";
+import React, {useContext} from "react";
 import {createStackNavigator} from "@react-navigation/stack";
+import {NavigationContainer} from "@react-navigation/native";
+
+import {ThemeContext} from "../context/theme/ThemeContext";
+
 import {
   AlertScreen,
   Animation101Screen,
@@ -14,15 +18,14 @@ import {
   TextInputScreen,
 } from "../screens";
 import {ThemeScreen} from "../screens/ThemeScreen";
-import {NavigationContainer} from "@react-navigation/native";
 
 const Stack = createStackNavigator();
 
 export const Navigation = () => {
+  const {theme} = useContext(ThemeContext);
+
   return (
-    <NavigationContainer
-    // theme={customTheme}
-    >
+    <NavigationContainer theme={theme}>
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
