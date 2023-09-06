@@ -1,14 +1,20 @@
-import React from "react";
+import React, {useContext} from "react";
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {globalStyles} from "../theme";
 import {FlatListMenuHeader} from "../components/flatlist";
+import {ThemeContext} from "../context/theme/ThemeContext";
 
 export const ThemeScreen = () => {
+  const {setDarkTheme} = useContext(ThemeContext);
+
   return (
     <View style={globalStyles.margin}>
       <FlatListMenuHeader title="Themes" />
 
-      <TouchableOpacity style={styles.button} activeOpacity={0.8}>
+      <TouchableOpacity
+        style={styles.button}
+        activeOpacity={0.8}
+        onPress={setDarkTheme}>
         <Text style={styles.text}>Light / Dark</Text>
       </TouchableOpacity>
     </View>
