@@ -14,7 +14,7 @@ const customTheme: Theme = {
   colors: {
     ...DefaultTheme.colors,
     // primary: 'string',
-    background: "black",
+    // background: "black",
     // card: 'string',
     // text: 'string',
     // border: 'string',

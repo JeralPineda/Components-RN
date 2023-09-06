@@ -51,4 +51,9 @@ export const menuItems: MenuItem[] = [
     icon: "copy-outline",
     component: "SlideScreen",
   },
+  {
+    name: "Themes",
+    icon: "color-palette-outline",
+    component: "ThemeScreen",
+  },
 ];
