@@ -5,27 +5,44 @@ import {FlatListMenuHeader} from "../components/flatlist";
 import {ThemeContext} from "../context/theme/ThemeContext";
 
 export const ThemeScreen = () => {
-  const {setDarkTheme} = useContext(ThemeContext);
+  const {
+    setDarkTheme,
+    setLightTheme,
+    theme: {colors},
+  } = useContext(ThemeContext);
 
   return (
     <View style={globalStyles.margin}>
       <FlatListMenuHeader title="Themes" />
 
-      <TouchableOpacity
-        style={styles.button}
-        activeOpacity={0.8}
-        onPress={setDarkTheme}>
-        <Text style={styles.text}>Light / Dark</Text>
-      </TouchableOpacity>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity
+          style={{...styles.button, backgroundColor: colors.primary}}
+          activeOpacity={0.8}
+          onPress={setLightTheme}>
+          <Text style={styles.text}>☀</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={{...styles.button, backgroundColor: colors.primary}}
+          activeOpacity={0.8}
+          onPress={setDarkTheme}>
+          <Text style={styles.text}>🌙</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  buttonContainer: {
+    flexDirection: "row",
+    gap: 10,
+    justifyContent: "space-between",
+  },
   button: {
-    width: 150,
+    width: 50,
     height: 50,
-    backgroundColor: "#5856d6",
     borderRadius: 20,
     justifyContent: "center",
   },
