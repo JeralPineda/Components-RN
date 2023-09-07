@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import {
   StyleSheet,
   View,
@@ -14,6 +14,7 @@ import {FlatListMenuHeader} from "../components/flatlist";
 import {globalStyles} from "../theme";
 import {useForm} from "../hooks/useForm";
 import {Switch} from "../components/form";
+import {ThemeContext} from "../context/theme/ThemeContext";
 
 export const TextInputScreen = () => {
   const {form, onChange, isSuscribed} = useForm({
@@ -22,6 +23,9 @@ export const TextInputScreen = () => {
     phone: "",
     isSuscribed: false,
   });
+  const {
+    theme: {colors},
+  } = useContext(ThemeContext);
 
   // const onChange = (value: string, field: string) => {
   //   setForm({
@@ -41,14 +45,16 @@ export const TextInputScreen = () => {
             <FlatListMenuHeader title="TextInputs" />
 
             <TextInput
-              style={styles.textInput}
+              style={{...styles.textInput, color: colors.text}}
+              placeholderTextColor={colors.text}
               placeholder="Ingrese su nombre"
               autoCorrect={false} // deshabilitar el auto corrector y sugerencias
               autoCapitalize="words" //! no funciona
               onChangeText={value => onChange(value, "name")}
             />
             <TextInput
-              style={styles.textInput}
+              style={{...styles.textInput, color: colors.text}}
+              placeholderTextColor={colors.text}
               placeholder="Ingrese su email"
               autoCorrect={false} // deshabilitar el auto corrector y sugerencias
               autoCapitalize="none"
@@ -57,7 +63,9 @@ export const TextInputScreen = () => {
             />
 
             <View style={styles.switchRow}>
-              <Text style={styles.switchText}>Suscribirse</Text>
+              <Text style={{...styles.switchText, color: colors.text}}>
+                Suscribirse
+              </Text>
               <Switch
                 isOn={isSuscribed}
                 onChange={value => onChange(value, "isSuscribed")}
@@ -67,7 +75,8 @@ export const TextInputScreen = () => {
             <FlatListMenuHeader title={JSON.stringify(form, null, 3)} />
             <FlatListMenuHeader title={JSON.stringify(form, null, 3)} />
             <TextInput
-              style={styles.textInput}
+              style={{...styles.textInput, color: colors.text}}
+              placeholderTextColor={colors.text}
               placeholder="Ingrese su teléfono"
               autoCorrect={false} // deshabilitar el auto corrector y sugerencias
               onChangeText={value => onChange(value, "phone")}

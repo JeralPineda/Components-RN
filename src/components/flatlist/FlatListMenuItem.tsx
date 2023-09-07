@@ -24,7 +24,7 @@ export const FlatListMenuItem = ({menuItem}: FlatListMenuItemProps) => {
       onPress={() => navigation.navigate(component as never)}>
       <View style={styles.container}>
         <Icon name={icon} size={24} color={colors.primary} />
-        <Text style={styles.itemText}>{name}</Text>
+        <Text style={{...styles.itemText, color: colors.text}}>{name}</Text>
         <Spacer />
         <Icon name="chevron-forward-outline" size={24} color={colors.primary} />
       </View>

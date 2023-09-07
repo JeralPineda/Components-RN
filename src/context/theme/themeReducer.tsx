@@ -5,12 +5,14 @@ type ThemeAction = {type: "set_light_theme"} | {type: "set_dark_theme"};
 export interface ThemeState extends Theme {
   currentTheme: "light" | "dark";
   dividerColor: string;
+  borderColor: string;
 }
 
 export const lightTheme: ThemeState = {
   currentTheme: "light",
   dark: false,
   dividerColor: "rgba(0,0,0,0.7)",
+  borderColor: "rgba(0,0,0,0.7)",
   colors: {
     primary: "#5856d6",
     background: "#fff",
@@ -18,7 +20,7 @@ export const lightTheme: ThemeState = {
 
     // secondary: "#dbdbdb",
     text: "#333333",
-    border: "orange",
+    border: "transparent",
     notification: "teal",
   },
 };
@@ -27,6 +29,8 @@ export const darkTheme: ThemeState = {
   currentTheme: "dark",
   dark: true,
   dividerColor: "rgba(0,0,0,0.7)",
+  borderColor: "rgba(255,255,255,0.7)",
+
   colors: {
     primary: "#5856d6",
     background: "#000",
@@ -34,7 +38,7 @@ export const darkTheme: ThemeState = {
 
     // secondary: "#dbdbdb",
     text: "#fff",
-    border: "orange",
+    border: "rgba(255, 255, 255, 0.308)",
     notification: "teal",
   },
 };

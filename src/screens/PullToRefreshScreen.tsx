@@ -1,12 +1,16 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {StyleSheet, Text, View, ScrollView, RefreshControl} from "react-native";
 import {FlatListMenuHeader} from "../components/flatlist";
 import {colors, globalStyles} from "../theme";
 import {useSafeAreaInsets} from "react-native-safe-area-context";
+import {ThemeContext} from "../context/theme/ThemeContext";
 
 export const PullToRefreshScreen = () => {
   const [refreshing, setRefreshing] = useState(false);
   const [data, setData] = useState("");
+  const {
+    theme: {colors},
+  } = useContext(ThemeContext);
 
   //alternativa para solucionar el top con el notch al hacer pul to refresh
   const {top} = useSafeAreaInsets();
@@ -40,7 +44,9 @@ export const PullToRefreshScreen = () => {
       <View style={globalStyles.margin}>
         <FlatListMenuHeader title="Pull to refresh" />
 
-        {data && <Text style={styles.title}>{data}</Text>}
+        {data && (
+          <Text style={{...styles.title, color: colors.text}}>{data}</Text>
+        )}
       </View>
     </ScrollView>
   );

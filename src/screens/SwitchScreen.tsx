@@ -1,7 +1,8 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {StyleSheet, View, Text} from "react-native";
 import {FlatListMenuHeader} from "../components/flatlist";
 import {Switch} from "../components/form";
+import {ThemeContext} from "../context/theme/ThemeContext";
 
 export const SwitchScreen = () => {
   const [state, setState] = useState({
@@ -9,6 +10,9 @@ export const SwitchScreen = () => {
     isHungry: false,
     isHappy: true,
   });
+  const {
+    theme: {colors},
+  } = useContext(ThemeContext);
 
   const {isActivity, isHungry, isHappy} = state;
 
@@ -24,7 +28,7 @@ export const SwitchScreen = () => {
       <FlatListMenuHeader title="Sweetches" />
 
       <View style={styles.switchRow}>
-        <Text style={styles.switchText}>isActive</Text>
+        <Text style={{...styles.switchText, color: colors.text}}>isActive</Text>
         <Switch
           isOn={isActivity}
           onChange={value => onChange(value, "isActivity")}
@@ -32,7 +36,7 @@ export const SwitchScreen = () => {
       </View>
 
       <View style={styles.switchRow}>
-        <Text style={styles.switchText}>isHungry</Text>
+        <Text style={{...styles.switchText, color: colors.text}}>isHungry</Text>
         <Switch
           isOn={isHungry}
           onChange={value => onChange(value, "isHungry")}
@@ -40,11 +44,13 @@ export const SwitchScreen = () => {
       </View>
 
       <View style={styles.switchRow}>
-        <Text style={styles.switchText}>isHappy</Text>
+        <Text style={{...styles.switchText, color: colors.text}}>isHappy</Text>
         <Switch isOn={isHappy} onChange={value => onChange(value, "isHappy")} />
       </View>
 
-      <Text style={styles.switchText}>{JSON.stringify(state, null, 3)}</Text>
+      <Text style={{...styles.switchText, color: colors.text}}>
+        {JSON.stringify(state, null, 3)}
+      </Text>
     </View>
   );
 };

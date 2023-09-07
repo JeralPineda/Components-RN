@@ -1,10 +1,14 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {StyleSheet, Text, View, Button, Modal} from "react-native";
 import {FlatListMenuHeader} from "../components/flatlist";
 import {globalStyles} from "../theme";
+import {ThemeContext} from "../context/theme/ThemeContext";
 
 export const ModalScreen = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const {
+    theme: {colors},
+  } = useContext(ThemeContext);
 
   return (
     <View style={globalStyles.margin}>
@@ -21,9 +25,16 @@ export const ModalScreen = () => {
         visible={isOpenModal}>
         <View style={styles.modalContainer}>
           {/* Content */}
-          <View style={styles.contentModal}>
-            <Text style={globalStyles.title}>Modal</Text>
-            <Text>Cuerpo del modal</Text>
+          <View
+            style={{
+              ...styles.contentModal,
+              backgroundColor: colors.background,
+              borderColor: colors.border,
+            }}>
+            <Text style={{...globalStyles.title, color: colors.text}}>
+              Modal
+            </Text>
+            <Text style={{color: colors.text}}>Cuerpo del modal</Text>
             <Button
               title="Cerrar modal"
               onPress={() => setIsOpenModal(false)}
@@ -54,6 +65,8 @@ const styles = StyleSheet.create({
       width: 0,
       height: 10,
     },
+    borderWidth: 2,
+    borderColor: "#fff",
     shadowOpacity: 0.25, //! Sombra IOS
     elevation: 10, //! Sombra Android
   },
