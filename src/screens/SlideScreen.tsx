@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, {useContext, useRef, useState} from "react";
 import {
   Animated,
   Dimensions,
@@ -16,6 +16,8 @@ import Icon from "react-native-vector-icons/Ionicons";
 import {useAnimation} from "../hooks";
 import {colors} from "../theme";
 import {StackScreenProps} from "@react-navigation/stack";
+import {ThemeContext} from "../context/theme/ThemeContext";
+import {ThemeState} from "../context/theme/themeReducer";
 
 const {width: screenWidth} = Dimensions.get("window");
 
@@ -43,13 +45,18 @@ const items: Slide[] = [
   },
 ];
 
-const renderItem = (item: Slide) => {
+const renderItem = (item: Slide, theme: ThemeState) => {
+  const {colors} = theme;
+
   return (
-    <View style={styles.containerSlide}>
+    <View
+      style={{...styles.containerSlide, backgroundColor: colors.background}}>
       <Image source={item.img} style={styles.image} />
 
-      <Text style={styles.title}>{item.title}</Text>
-      <Text style={styles.description}>{item.desc}</Text>
+      <Text style={{...styles.title, color: colors.text}}>{item.title}</Text>
+      <Text style={{...styles.description, color: colors.text}}>
+        {item.desc}
+      </Text>
     </View>
   );
 };
@@ -60,6 +67,7 @@ export const SlideScreen = ({navigation}: Props) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const {opacity, fadeIn} = useAnimation();
   const isVisible = useRef(false);
+  const {theme} = useContext(ThemeContext);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -68,7 +76,7 @@ export const SlideScreen = ({navigation}: Props) => {
         // ref={c => {
         //   this._carousel = c;
         // }}
-        renderItem={({item}: any) => renderItem(item)}
+        renderItem={({item}: any) => renderItem(item, theme)}
         sliderWidth={screenWidth}
         itemWidth={screenWidth}
         onSnapToItem={(index: number) => {
